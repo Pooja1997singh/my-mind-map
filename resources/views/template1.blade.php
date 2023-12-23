@@ -24,10 +24,14 @@
 .plus-button{
   color:red;
   background-color:red;
+  
 }
 .svgcontainer{
     margin:auto;
     background-color:lightgrey;
+}
+#canvas{
+  margin-left:126px;
 }
     </style>
    
@@ -39,7 +43,7 @@
 
 
 
-<div id="canvas" class="ui-widget-content  resizable input-group mb-3 " style="height:10px;"></div>
+<div id="canvas" class="ui-widget-content  resizable input-group mb-3 "></div>
    
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -49,7 +53,7 @@
 
 <script>
   const data=["hello"];
-  const margin ={top: 10, right: 100, bottom: 120, left: 200};
+  const margin ={top: 210, right: 100, bottom: 100, left: 100};
 
   var width = 990 - margin.right - margin.left;
   var height = 500 - margin.top - margin.bottom;
@@ -79,10 +83,13 @@
   nodeEnter.append('rect')
             .attr('x', 0)
             .attr('y', 0)
-            .attr('width', 55)
-            .attr('height', 30)
+            .attr('rx',10)
+            .attr('ry',10)
+            .attr('width', 100)
+            .attr('height', 45)
             .attr('stroke', 'black')
-            .attr('fill', '#69a3b2');
+            .attr('stroke-width',3)
+            .attr('fill', 'lime');
 
    nodeEnter.append('text')
             .attr('x', 10) 
@@ -124,80 +131,7 @@
                 });               
  }
 
-//  function AddPlusButton(nodeEnter) {
-//   // Loop to create multiple children within each nodeEnter
-//   for (let i = 0; i < numberOfChildren; i++) {
-//     // Append the child element within nodeEnter
-//     nodeEnter.append('rect')
-//       .attr('x', Math.random() * i)
-//       .attr('y', Math.random() * i)
-//       .attr('width',55)
-//       .attr('height', 30)
-//       .attr('stroke', 2)
-//       .attr('fill', 'green');
 
-//     nodeEnter.append('text')
-//       .attr('x', Math.random() * i)
-//       .attr('y',  Math.random() * i)
-//       .attr('fill', 'orange')
-//       .text(function(d){
-//         return d;
-//       })
-//       .on('dblclick', function() {
-//         AddNewNode(d3.select(this.parentNode));
-//       });
-//   }
-// }
-
-// function AddPlusButton(nodeEnter) {
-
-//   for (let i = 0; i < numberOfChildren; i++) {
-//   console.log('test')
-
-//   // Append the first set of child elements within nodeEnter
-//   var rect1 = nodeEnter.append('rect')
-//     .attr('x', 500)
-//     .attr('y', 200)
-//     .attr('width', 55)
-//     .attr('height', 30)
-//     .attr('stroke', 2)
-//     .attr('fill', 'green');
-
-//   var text1 = nodeEnter.append('text')
-//     .attr('x', function() { return 500 + Math.random() * 100; }) // Adjust the x position as needed
-//     .attr('y', function() { return 200 + Math.random() * 100; }) // Adjust the y position as needed
-//     .attr('fill', 'orange')
-//     .text(function(d) {
-//       return d;
-//     })
-//     .on('dblclick', function() {
-//       AddNewNode(d3.select(this.parentNode));
-//     });
-
-//   // Append the second set of child elements within nodeEnter
-//   var rect2 = nodeEnter.append('rect')
-//     .attr('x', 600)
-//     .attr('y', 600)
-//     .attr('width', 55)
-//     .attr('height', 30)
-//     .attr('stroke', 2)
-//     .attr('fill', 'green');
-
-//   var text2 = nodeEnter.append('text')
-//     .attr('x', function() { return 600 + Math.random() * 100; }) // Adjust the x position as needed
-//     .attr('y', function() { return 600 + Math.random() * 100; }) // Adjust the y position as needed
-//     .attr('fill', 'orange')
-//     .text(function(d) {
-//       return d;
-//     })
-//     .on('dblclick', function() {
-//       AddNewNode(d3.select(this.parentNode));
-//     });
-
-//   // Optionally, return the created elements if needed
-//   return { rect1, text1, rect2, text2 };
-//   }
-// }
 
 
 
@@ -205,7 +139,7 @@
 
   var plusButton = Node.append('g')
         .attr('class', 'plus-button')
-        .attr('transform', 'translate(55,15)')
+        .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
         .style('cursor', 'pointer') // Make it clickable 
         
          // Append a circle for the plus button
